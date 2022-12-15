@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome to home</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        /* body{
+        background: linear-gradient(to top, #66ccff 0%, #ffffcc 100%);
+        } */
+        .main{
+            width: 100%  !important;
+            height: 920px;
+        }
+        .name{
+            padding-right: 20px!important
+
+        }
+    </style>
+</head>
+<body style=" background: linear-gradient(to top, #66ccff 0%, #ffffcc 100%); background-repeat: no-repeat;" >
+<nav class="navbar  bg-secondary justify-content-between">
+    <a class="navbar-brand text-white ms-5">HOME</a>
+    <form class="d-flex" role="search">
+        <div class="ms-5 name">
+            {{if .message}}
+            <a href="/logout" class="btn btn-success  mr-5 " type="submit" >logout</a>
+            {{else}}
+            <a href="/login" class="btn btn-danger" type="submit">login </a>
+            {{end}}
+        </div>
+    </form>
+<!--     <button class="btn btn-outline-success bg-danger my-2 my-sm-0 text-white me-5  "href="login.html"  type="submit">login</button>-->
+</nav>
+<div class="main container justify-content-center">
+    <div class=" col justify-content-center ">
+        {{if.message}}
+        <h1 class="mt-5" style="color:red;  " after_login>Welcome {{.message.Email}} </h1>
+            {{if.}}
+        <h1>{{.error}}</h1>
+            {{end}}
+        {{else}}
+        <h1 style="color:green;" class="mr-5" before_login>LOGIN PLEASE</h1>
+        <h1  style="color: green;">LOGIN FIRST</h1>
+        {{end}}
+    </div>
+</div>
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
