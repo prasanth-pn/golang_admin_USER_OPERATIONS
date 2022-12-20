@@ -1,6 +1,6 @@
 package controllers
 
-import "C"
+
 import (
 	"awesomeProject/initializer"
 	"awesomeProject/models"
