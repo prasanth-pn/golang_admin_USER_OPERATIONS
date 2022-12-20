@@ -43,20 +43,20 @@ func AdminLoginSubmit(c *gin.Context) {
 
 	// Look up reqested user
 
-	var user models.Admin
+	var admin models.Admin
 
 	// fmt.Print("\n\n email :", body.Email, "\npassword :", body.Password, "\n\n")
 
 	// It equals to : SELECT * FROM users WHERE email = requested email;
-	initializer.DB.First(&user, "username = ?", body.Email)
+	initializer.DB.First(&admin, "email = ?", body.Email)
 
-	if user.ID == 0 {
+	if admin.ID == 0 {
 		c.HTML(http.StatusBadRequest, "adminlogin.html", gin.H{
 			"error": "invalid user name or password e ",
 		})
 		return
 	}
-	if user.Password != body.Password {
+	if admin.Password != body.Password {
 		c.HTML(http.StatusBadRequest, "adminlogin.html", gin.H{
 			"error": "invalid user name or password  p",
 		})
@@ -64,7 +64,7 @@ func AdminLoginSubmit(c *gin.Context) {
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"sub": user.ID,
+		"sub": admin.ID,
 		"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
 	})
 

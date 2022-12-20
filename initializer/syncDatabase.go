@@ -1,6 +1,6 @@
 package initializer
 
-import "github.com/prasanth-pn/admin-login/models"
+import "awesomeProject/models"
 
 func SyncDatabase() {
 	DB.AutoMigrate(&models.User{})
